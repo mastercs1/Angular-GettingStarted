@@ -21,14 +21,17 @@ export class ProductListComponent implements OnInit{
    showImage :boolean =false;
    private _filterWord ='';
    filterdProducts :IProduct[]=[];
+   phone_number_standard="";
+
+ 
 
    ngOnInit(): void {
     this._filterWord ='';
     this.filterdProducts = this.products;
     console.log(this._filterWord);
    }
-
   
+
    get filterWord ():string{
     return this._filterWord;
    }
@@ -37,6 +40,9 @@ export class ProductListComponent implements OnInit{
     this._filterWord=_filterWord;
     this.filterdProducts = this.filteringList(_filterWord);
    }
+
+
+
 
    
    products :IProduct[] =[
@@ -103,4 +109,11 @@ export class ProductListComponent implements OnInit{
    openDetails() :void{
          
    }
+
+   telOptions = {initialCountry: 'au', preferredCountries: ['au', 'gb']};
+   
+   onPhoneNumberChange(event: any) {
+    this.phone_number_standard = event;
+    console.log("phone_number_standard " +this.phone_number_standard);
+  }
 }

@@ -14,8 +14,10 @@
               
           </mat-card-content>
       </mat-card>
-      
 
+ 
+
+<input type="text" ng2TelInput [value]="phone_number_standard" [ng2TelInputOptions]="telOptions" (ng2TelOutput)="onPhoneNumberChange($event)" maxlength="15"/>
 
     <div class="card-body">
         <div class="row">
