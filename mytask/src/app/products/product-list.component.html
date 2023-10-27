@@ -11,19 +11,10 @@
                   <mat-icon>close</mat-icon>
                 </button> 
               </mat-form-field>
-              
           </mat-card-content>
       </mat-card>
-
- 
-
-<input type="text" ng2TelInput [value]="phone_number_standard" [ng2TelInputOptions]="telOptions" (ng2TelOutput)="onPhoneNumberChange($event)" maxlength="15"/>
-
+      
     <div class="card-body">
-        <div class="row">
-          <div class="col-md-2"> Filter by: </div>
-           <div class="col-md-2"><input type="text" [(ngModel)]="filterWord"></div> <!--find the filterList first then find set method-->
-        </div>
         <div class ="row">
             <div class="col-md-6">
                 <h4> Filtered by: {{filterWord}}</h4><!--find the filterList first then find get method-->
@@ -31,36 +22,36 @@
         </div>
     </div>
     <div class="table-responsive">
-        <table class ="table" *ngIf ='products.length'>
+        <table  class="table" *ngIf ='products.length'>
             <thead>
                 <tr>
-                    <th>
+                    <th scope="col">
                         <button class="btn btn-primary" 
                         (click) ='toggleImage()'>
                             {{showImage?'Hide':'Show'}} Image
                         </button>
                     </th>
-                    <th>Product</th>
-                    <th>Code</th>
-                    <th>Available</th>
-                    <th>Price</th>
-                    <th>5 Stars Rating</th>
-                    <th>Action</th>
+                    <th scope="col">Hero Name</th>
+                    <th scope="col">Race</th>
+                    <th scope="col">Dob</th>
+                    <th scope="col">Hire Price</th>
+                    <th scope="col">5 Stars Rating</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
              <tbody>
-                <tr *ngFor='let product of filterdProducts'>
-                    <td ><img *ngIf='showImage' [src]='product.imageUrl'
-                              [title]='product.productName'
+                <tr *ngFor='let hero of filterdHeroes'>
+                    <td scope="row"><img *ngIf='showImage' [src]='hero.imageUrl'
+                              [title]='hero.heroName'
                               [style.width.px]='imageWidth'
                               [style.margin.px]='imageMargin'
 />
                             </td>
-                    <td>{{product.productName | uppercase}}</td>
-                    <td>{{product.productCode | replaceChar:"-":" "}}</td>
-                    <td>{{product.releaseDate}}</td>
-                    <td>{{product.price| currency :'AUD':'symbol':'1.2-2'}}</td>
-                    <td>
+                    <td scope="row">{{hero.heroName | uppercase}}</td>
+                    <td scope="row">{{hero.heroRace | replaceChar:"-":" "}}</td>
+                    <td scope="row">{{hero.heroDob}}</td>
+                    <td scope="row">{{hero.hirePrice| currency :'AUD':'symbol':'1.2-2'}}</td>
+                    <td scope="row">
                         <!-- <pm-star [starRating]="product.starRating"
                       ></pm-star> -->
                     </td>
