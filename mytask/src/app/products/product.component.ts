@@ -3,15 +3,19 @@ import { OnInit } from '@angular/core';
 import { NgModule } from '@angular/core';
 import { StarRatingComponent } from '../shared/star/star.component';
 import { Hero } from './hero';
-
-
+import {FormsModule} from '@angular/forms';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {NgIf} from '@angular/common';
+import {MatIconModule} from '@angular/material/icon';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @Component({
     selector: 'pm-products',
     templateUrl: './product-list.component.html',
-    styleUrls:['./product-list.component.scss']
-
+    styleUrls:['./product-list.component.scss'],
+   
 })
 export class ProductListComponent implements OnInit{
   
@@ -22,9 +26,6 @@ export class ProductListComponent implements OnInit{
    private _filterWord ='';
    filterdHeroes :Hero[]=[];
    
-
- 
-
    ngOnInit(): void {
     this._filterWord ='';
     this.filterdHeroes = this.products;
@@ -35,9 +36,9 @@ export class ProductListComponent implements OnInit{
     return this._filterWord;
    }
    
-   set filterWord (_filterWord :string){
-    this._filterWord=_filterWord;
-    this.filterdHeroes = this.filteringList(_filterWord);
+   set filterWord (value :string){
+    this._filterWord=value;
+    this.filterdHeroes = this.filteringList(value);
    }
 
    products :Hero[] =[
