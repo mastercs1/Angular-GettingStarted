@@ -8,28 +8,28 @@ import { Component, EventEmitter, HostListener, Input, OnChanges, OnInit, Output
     templateUrl:'./star.component.html',
     styleUrls:['./star.component.css']
 })
-export class StarRatingComponent implements OnInit{
+export class StarRatingComponent implements OnChanges{
 
-    @Input()
-    cropWidth =0;
+    cropWidth=75;
     
     @Input()
     starRating=0;
 
-    private oneStarWidth =75/15;
-
-    ngOnInit(): void {
-     
-        this.cropWidth = this.starRating * this.oneStarWidth;
-        console.log("width=" +this.cropWidth);
+    @Output() ratingClicked :EventEmitter<string> = new EventEmitter<string>();
+    
+    ngOnChanges(): void {
+        console.log('it called');
+        this.cropWidth = this.starRating * 15; 
     }
 
     
     addStar () : void{
        let totalWidth :number;
-       this.starRating +=this.starRating;
-        totalWidth = this.starRating * this.oneStarWidth >=75 ? 75:this.starRating * this.oneStarWidth;
+       this.starRating =this.starRating+0.3;
+       this.starRating = parseFloat(this.starRating.toFixed(1));
+       totalWidth = this.starRating * 15 >=75 ? 75:this.starRating * 15;
         this.cropWidth = totalWidth;
+        this.ratingClicked.emit(`current rating is ${this.starRating} thanks for voting`);
         console.log("starRating =" + this.starRating);
         console.log("cropWidth =" + this.cropWidth);
       }

@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from "@angular/common/http";
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductListComponent } from './products/product.component';
+import { ProductListComponent } from './heros/product.component';
 import { FormsModule } from '@angular/forms';
 import { ReplaceChar } from './shared/common-pipe/pipe.replace-char.pipe';
 import { StarRatingComponent } from './shared/star/star.component';
@@ -33,7 +33,8 @@ import {MatTableModule} from '@angular/material/table';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
   exports: [
     MatIconModule,

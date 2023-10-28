@@ -1,6 +1,5 @@
 
     <mat-card>
-      
     <div>   
         <mat-card-content> 
               <mat-form-field class="example-form-field">
@@ -17,13 +16,13 @@
     <div class="card-body">
         <div class ="row">
             <div class="col-md-6">
-                <h4> Filtered by: {{filterWord}}</h4><!--find the filterList first then find get method-->
+                <h4> {{pageTitle}}</h4><!--find the filterList first then find get method-->
             </div>
         </div>
     </div>
 
     <div class="table-responsive">
-        <table   class="table" *ngIf ='products.length'>
+        <table   class="table" *ngIf ='filterdHeroes.length'>
             <thead>
                 <tr>
                     <th scope="col">
@@ -52,7 +51,9 @@
                     <td scope="row">{{hero.heroRace | replaceChar:"-":" "}}</td>
                     <td scope="row">{{hero.heroDob}}</td>
                     <td scope="row">{{hero.hirePrice| currency :'AUD':'symbol':'1.2-2'}}</td>
-                    <td scope="row"> <pm-star [starRating]="hero.starRating"></pm-star> </td>
+                    <td scope="row"> <pm-star [starRating]="hero.starRating"
+                        (ratingClicked)='notifyParent($event)'
+                        ></pm-star> </td>
                     
                     <td> <button class="btn btn-primary" (click)="openDetails()"> Check Details</button></td>
                 </tr>
